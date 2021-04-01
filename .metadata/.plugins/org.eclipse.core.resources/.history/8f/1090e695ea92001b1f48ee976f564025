@@ -1,0 +1,45 @@
+
+/**
+ * Germán Iglesias Ramos
+ * UO202549
+ * SSI - Tarea Seminario APACHE COMMONS VALIDATORS
+ * Validar un Email
+ */
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.commons.validator.routines.UrlValidator;
+
+public class Validar {
+
+	public static void main(String[] args) {
+
+		// Creamos una instancia de EmailValidator
+		UrlValidator emailValidator = UrlValidator.getInstance();
+
+		// Creamos una lista de correos electrónicos
+		List<String> urls = new ArrayList<String>();
+
+		// Emails válidos
+		urls.add("https://www.uniovi.es/");
+		urls.add("http://www.uniovi.es/");
+		urls.add("https://uniovi.es/");
+		urls.add("https://www.uniovi.es/launiversidad/panoramica");
+		urls.add("ftp://www.uniovi.es");
+
+		// Emails inválidos
+		urls.add("https://www.uniovi"); // No contine "@"
+		urls.add("www.uniovi.es/"); // Puntos seguidos en la parte local
+		urls.add("https:/www.uniovi.es/"); // Inicio punto en el dominio
+		urls.add("https:www.uniovi.es/"); // En el dominio no existe un .com .es .org .net
+		urls.add("file://www.uniovi.es/"); // En el dominio no existe un .com .es .org .net
+
+		// Recorremos la lista
+		for (String valor : urls) {
+			System.out.println("La URL: [" + valor + "] es "
+					+ (emailValidator.isValid(valor) ? "válida" : "inválida"));
+		} // emailValidator.isValid() = comprueba si las direcciones de correo electrónico
+			// son válidas mediante el método isValid
+	}
+}

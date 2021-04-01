@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;emailValidator&apos; in &apos;Validar.main(...)&apos; to &apos;urlValidator&apos;&#x0D;&#x0A;- Original project: &apos;ValidarUnEmail&apos;&#x0D;&#x0A;- Original element: &apos;Validar.main(String[]).emailValidator&apos;&#x0D;&#x0A;- Renamed element: &apos;emailValidator&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;emailValidator&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{Validar.java[Validar~main~\[QString;@emailValidator!362!418!375!388!QUrlValidator;!0!false" name="urlValidator" references="true" stamp="1617282122520" version="1.0"/>
+</session>

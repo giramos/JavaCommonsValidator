@@ -1,0 +1,44 @@
+
+/**
+ * Germán Iglesias Ramos
+ * UO202549
+ * SSI - Tarea Seminario APACHE COMMONS VALIDATORS
+ * Validar una URL
+ */
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.commons.validator.routines.CreditCardValidator;
+
+public class Validar {
+
+	public static void main(String[] args) {
+
+		// Creamos una instancia de UrlValidator
+		CreditCardValidator creditCardValidator = new CreditCardValidator(CreditCardValidator.VISA);
+
+		// Creamos una lista de url
+		List<String> urls = new ArrayList<String>();
+
+		// Emails válidos
+		urls.add("4111 1111 1111 1111");
+		urls.add("4111111111111111");
+		urls.add("https://uniovi.es/");
+		urls.add("https://www.uniovi.es/launiversidad/panoramica");
+		urls.add("ftp://www.uniovi.es");
+
+		// Emails inválidos
+		urls.add("https://www.uniovi"); // No contiene el dominio .es .com .org .net
+		urls.add("www.uniovi.es/"); // No tiene protocolo
+		urls.add("https:/www.uniovi.es/"); // Le falta "/"
+		urls.add("https:www.uniovi.es/"); // Le falta "//"
+		urls.add("file://www.uniovi.es/"); // El protocolo debe ser http https ftp
+
+		// Recorremos la lista
+		for (String valor : urls) {
+			System.out.println("La URL: [" + valor + "] es " + (creditCardValidator.isValid(valor) ? "válida" : "inválida"));
+		} // urlValidator.isValid() = comprueba si las url
+			// son válidas mediante el método isValid
+	}
+}

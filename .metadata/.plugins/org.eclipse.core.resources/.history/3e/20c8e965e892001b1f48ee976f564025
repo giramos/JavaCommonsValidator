@@ -1,0 +1,43 @@
+
+/**
+ * Germán Iglesias Ramos
+ * UO202549
+ * SSI - Tarea Seminario APACHE COMMONS VALIDATORS
+ * Validar un Email
+ */
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.commons.validator.routines.UrlValidator;
+
+public class Validar {
+
+	public static void main(String[] args) {
+
+		// Creamos una instancia de EmailValidator
+		UrlValidator emailValidator = UrlValidator.getInstance();
+
+		// Creamos una lista de correos electrónicos
+		List<String> urls = new ArrayList<String>();
+
+		// Emails válidos
+		urls.add("www.marca.es");
+		urls.add("https://www.marca.es");
+		urls.add("https://marca.es");
+		urls.add("http://www.marca.es");
+
+		// Emails inválidos
+		urls.add("https://www.marca.es/ronaldo"); // No contine "@"
+		urls.add("https://www.marca.es/ronaldo*P12"); // Puntos seguidos en la parte local
+		urls.add("ftp://www.marca.es"); // Inicio punto en el dominio
+		urls.add("german@iglesias.ramos"); // En el dominio no existe un .com .es .org .net
+
+		// Recorremos la lista
+		for (String valor : urls) {
+			System.out.println("La URL: [" + valor + "] es "
+					+ (emailValidator.isValid(valor) ? "válida" : "inválida"));
+		} // emailValidator.isValid() = comprueba si las direcciones de correo electrónico
+			// son válidas mediante el método isValid
+	}
+}
